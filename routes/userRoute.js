@@ -26,6 +26,7 @@ userRouter.post('/signin', async (req, res) => {
       return res.status(201).json({ msg: 'Now, You are registered!', isSave, status: true });
     }
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ msg: 'Internal Server Error' });
   }
 });

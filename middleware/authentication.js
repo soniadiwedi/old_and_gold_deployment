@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const authentication=async(req,res,next)=>{
-    const token = req?.headers?.authorization.split(" ")[1];
+    const token = req.headers.authorization?.split(" ")[1];
     try {
         jwt.verify(token,"attryb", function(err, code) {
             if(!err&&code){
