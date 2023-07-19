@@ -14,7 +14,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get("/",(res,req)=>{
-    res.send(`<h1>Hello Dealers</h1>`)
+    res.send('This is the response');
 })
 
 app.use("/user",userRouter)
