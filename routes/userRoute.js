@@ -44,7 +44,7 @@ userRouter.post("/login",async(req,res)=>{
               msg: "Login Successfull",
               token: jwt.sign(
                 { userId: isExists._id, userName: isExists.name,role:isExists.role },
-                process.env.PRIVATE_KEY
+                "attryb"
               ),
               uid:isExists._id,
               isDelaer:isExists.role=="Dealer"?true:false,

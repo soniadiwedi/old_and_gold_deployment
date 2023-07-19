@@ -3,7 +3,7 @@ require("dotenv").config();
 const authentication=async(req,res,next)=>{
     const token = req?.headers?.authorization.split(" ")[1];
     try {
-        jwt.verify(token, process.env.PRIVATE_KEY, function(err, code) {
+        jwt.verify(token,"attryb", function(err, code) {
             if(!err&&code){
                 req.body.userId=code.userId
                 req.body.role=code.role
