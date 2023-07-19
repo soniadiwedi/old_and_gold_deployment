@@ -13,7 +13,7 @@ app.use(cors())
 //this express.json is used to get the data from the fronted in json  parsed format
 app.use(express.json())
 
-app.get("/",(res,req)=>{
+app.get("/",(req,res)=>{
     res.send('This is the response');
 })
 
