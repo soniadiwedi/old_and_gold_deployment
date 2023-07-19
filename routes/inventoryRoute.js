@@ -1,9 +1,10 @@
 const express = require('express');
 const inventoryRouter = express.Router();
-const InventoryModel=require("../model/inventoryModel")
+const InventoryModel=require("../model/inventoryModel");
+const { authentication } = require('../middleware/authentication');
 
 
-inventoryRouter.post('/add', async (req, res) => {
+inventoryRouter.post('/add',authentication ,async (req, res) => {
   try {
     const {
       carModel,
@@ -41,7 +42,7 @@ inventoryRouter.post('/add', async (req, res) => {
 });
 
 // http://localhost:5000/inventory?mileage=200
-inventoryRouter.get('/', async (req, res) => {
+inventoryRouter.get('/',authentication ,async (req, res) => {
     const { listPrice, color, mileage, userId } = req.query;
     try {
       let query = {};
@@ -71,7 +72,7 @@ inventoryRouter.get('/', async (req, res) => {
   });
 
 // 
-inventoryRouter.delete('/delete/:id', async (req, res) => {
+inventoryRouter.delete('/delete/:id',authentication, async (req, res) => {
   try {
     const { id } = req.params;
     await InventoryModel.findByIdAndDelete(id);
@@ -82,7 +83,7 @@ inventoryRouter.delete('/delete/:id', async (req, res) => {
 });
 
 // http://localhost:5000/inventory/edit/64b773a8d1ddf08c3af73785
-inventoryRouter.patch('/edit/:id', async (req, res) => {
+inventoryRouter.patch('/edit/:id',authentication, async (req, res) => {
   try {
     const { id } = req.params;
     const {

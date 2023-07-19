@@ -1,10 +1,11 @@
 const express = require('express');
 const oemSpecsModel = require('../model/oemSpecModel');
+const { authentication } = require('../middleware/authentication');
 
 const oemRouter = express.Router();
 
 
-oemRouter.post('/add', async (req, res) => {
+oemRouter.post('/add',authentication ,async (req, res) => {
     const { model, year, listPrice, colors, mileage, power, maxSpeed } = req.body;
   
     try {
